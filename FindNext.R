@@ -20,6 +20,7 @@ FindNext<-function(occ.table, env.vars, add.site=NULL){
   #Example:
   #   Pending development.
   
+  require(gdm)
   #Compute dissimilarity model from occurrence data
   gdm.table <- formatsitepair(occ.table, bioFormat=2, XColumn="lon", YColumn="lat", 
                               sppColumn="species", siteColumn="site", 
