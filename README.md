@@ -1,2 +1,2 @@
 # OptimalSampling
-Where to sample next
+Where to sample next?
