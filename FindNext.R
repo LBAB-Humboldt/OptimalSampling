@@ -18,9 +18,10 @@ FindNext<-function(occ.table, env.vars, add.site=NULL){
   #     dist.table:   data frame of x,y and ED complementarity
   #                   values for all target sites.
   #Example:
-  #   Pending development.
+  #   Pending.
   
   require(gdm)
+  require(reshape2)
   #Compute dissimilarity model from occurrence data
   gdm.table <- formatsitepair(occ.table, bioFormat=2, XColumn="lon", YColumn="lat", 
                               sppColumn="species", siteColumn="site", 
@@ -59,13 +60,13 @@ FindNext<-function(occ.table, env.vars, add.site=NULL){
   dist2sampled <- t.raster
   dist2sampled[t.raster] <- 0
   dist2sampled[res2$c.unsampl] <- min.dis.vals
-  plot(dist2sampled,col=rev(heat.colors(10)))
+#  plot(dist2sampled,col=rev(heat.colors(10)))
   
   #Order sites in decreasing order of predicted biological distance
   #First site on list is the most disimilar site to surveyed sites
   dists <- data.frame(xyFromCell(t.raster,res2$c.unsampl), dist=min.dis.vals)
   dists <- dists[order(-dists$dist),]
-  points(dists[1,1:2],col="blue",pch=18)
-  points(occ.table[,c("lon","lat")],pch=18,cex=0.6)
+#  points(dists[1,1:2],col="blue",pch=18)
+#  points(occ.table[,c("lon","lat")],pch=18,cex=0.6)
   return(list(dist.raster=dist2sampled, dist.table=dists))
 }
